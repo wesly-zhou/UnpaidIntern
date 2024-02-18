@@ -1,0 +1,13 @@
+Thanks for buying the office props pack! This deserve a toast with coffee!
+
+Any animation with 5 frames or less in this pack was meant to be played at a low speed, 
+something like 3 - 5 frames per second max.
+
+The smooth animations, like the chair and the copy machine ones are meant to be played at high speeds,
+like 10-15 frames per second!
+
+The items that goes into the table can be arranged anyway you want, just be careful to not break perspective.
+
+Last but not least, the watter dispenser is not in the same perspective and size, so it dosent fit with the rest of the props, but i decide to include it as a bonus if you have any 2d plataformer where it can go well!
+
+Thx again, have a good and productive gamedev journey! ;P
