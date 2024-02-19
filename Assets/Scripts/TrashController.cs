@@ -5,13 +5,20 @@ using UnityEngine;
 public class TrashController : MonoBehaviour
 {
     private bool pickUpAllowed;
-    // Start is called before the first frame update
-
+    public GameHandler gameHandlerObj;
+    
+    void Start()
+    {
+        if (GameObject.FindWithTag("GameHandler") != null) {
+            gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.Space)) {
             PickUp();
+            gameHandlerObj.AddScore(1);
         }
     }
 
