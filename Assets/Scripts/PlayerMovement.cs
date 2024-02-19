@@ -10,10 +10,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private bool faceRight = true;
 
+    public AudioClip walkSound;//sound effect
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();//get sound
     }
 
     // Update is called once per frame
@@ -23,6 +27,19 @@ public class PlayerMovement : MonoBehaviour
         transform.position = transform.position + hvMove * moveSpeed * Time.deltaTime;
         if ((hvMove.x <0 && faceRight) || (hvMove.x >0 && !faceRight)){
             playerTurn();
+        }
+        // play sound effect
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = walkSound;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop(); // 停止播放音效
         }
     }
 

@@ -6,7 +6,8 @@ public class TrashController : MonoBehaviour
 {
     private bool pickUpAllowed;
     public GameHandler gameHandlerObj;
-    
+    public AudioClip cleanSound;//Add this line to reference the sound effect when cleaning
+
     void Start()
     {
         if (GameObject.FindWithTag("GameHandler") != null) {
@@ -38,6 +39,18 @@ public class TrashController : MonoBehaviour
 
     private void PickUp()
     {
+        //Create a temporary game object to play sound effects
+        GameObject tempAudioPlayer = new GameObject("TempAudioPlayer");
+        AudioSource audioSource = tempAudioPlayer.AddComponent<AudioSource>();
+        //Configure audio source
+        audioSource.clip = cleanSound;
+        audioSource.playOnAwake = false;
+        //play sound
+        audioSource.Play();
+        //Destroy the temporary audio player object,
+        //the delay time is equal to the length of the sound effect
+        Destroy(tempAudioPlayer, cleanSound.length);
+
         Destroy(gameObject);
     }
 }
