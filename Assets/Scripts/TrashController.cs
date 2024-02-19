@@ -45,6 +45,7 @@ public class TrashController : MonoBehaviour
         //Configure audio source
         audioSource.clip = cleanSound;
         audioSource.playOnAwake = false;
+        audioSource.volume = 0.1f;
         //play sound
         audioSource.Play();
         //Destroy the temporary audio player object,

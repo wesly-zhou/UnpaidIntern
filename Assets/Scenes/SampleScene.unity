@@ -237,28 +237,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 77174008}
-  - component: {fileID: 77174007}
+  - component: {fileID: 77174009}
   m_Layer: 0
   m_Name: SpawnerLeft
-  m_TagString: Untagged
+  m_TagString: Left
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &77174007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77174006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aecc2343092973b4d8d048b9ddd37527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quad: {fileID: 2025035272}
-  trash: {fileID: 4393247720478938391, guid: 58baf1e1aad1e0849af4e258de6cc85a, type: 3}
 --- !u!4 &77174008
 Transform:
   m_ObjectHideFlags: 0
@@ -274,6 +260,20 @@ Transform:
   m_Father: {fileID: 859755926}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77174009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77174006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecc2343092973b4d8d048b9ddd37527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quad: {fileID: 2025035272}
+  trash: {fileID: 4393247720478938391, guid: 58baf1e1aad1e0849af4e258de6cc85a, type: 3}
 --- !u!1 &190905059
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 522263929}
   m_Layer: 0
   m_Name: QuadRight
-  m_TagString: Untagged
+  m_TagString: Right
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1041,7 +1041,7 @@ GameObject:
   - component: {fileID: 650993373}
   m_Layer: 0
   m_Name: SpawnerRight
-  m_TagString: Untagged
+  m_TagString: Right
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 650993371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d73455bb5d15e44b5465779f163f20, type: 3}
+  m_Script: {fileID: 11500000, guid: aecc2343092973b4d8d048b9ddd37527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   quad: {fileID: 522263927}
@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 831530813}
   m_Layer: 0
   m_Name: SpawnerBottom
-  m_TagString: Untagged
+  m_TagString: Bottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 831530811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a09b3ceb2df655c4fa9d381402cc33e0, type: 3}
+  m_Script: {fileID: 11500000, guid: aecc2343092973b4d8d048b9ddd37527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   quad: {fileID: 1680941416}
@@ -3522,7 +3522,7 @@ GameObject:
   - component: {fileID: 1556572076}
   m_Layer: 0
   m_Name: SpawnerTop
-  m_TagString: Untagged
+  m_TagString: Top
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3551,7 +3551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1556572074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad5d3fd7800eb1e42bd7437ad489fc8e, type: 3}
+  m_Script: {fileID: 11500000, guid: aecc2343092973b4d8d048b9ddd37527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   quad: {fileID: 1686205178}
@@ -3764,7 +3764,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c61fd6a779f16254ea042440d04e3ce4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.104
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3946,7 +3946,7 @@ GameObject:
   - component: {fileID: 1680941418}
   m_Layer: 0
   m_Name: QuadBottom
-  m_TagString: Untagged
+  m_TagString: Bottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4052,7 +4052,7 @@ GameObject:
   - component: {fileID: 1686205180}
   m_Layer: 0
   m_Name: QuadTop
-  m_TagString: Untagged
+  m_TagString: Top
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4687,7 +4687,7 @@ GameObject:
   - component: {fileID: 2025035273}
   m_Layer: 0
   m_Name: QuadLeft
-  m_TagString: Untagged
+  m_TagString: Left
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
