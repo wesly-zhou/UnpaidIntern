@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         // play sound effect
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
+            GetComponent<Animator>().SetBool("status", true);
             if (!audioSource.isPlaying)
             {
                 audioSource.clip = walkSound;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            GetComponent<Animator>().SetBool("status", false);
             audioSource.Stop(); // 停止播放音效
         }
     }
