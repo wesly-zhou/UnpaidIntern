@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
-        transform.position = transform.position + hvMove * moveSpeed * Time.deltaTime;
+        // transform.position = transform.position + hvMove * moveSpeed * Time.deltaTime;
         if ((hvMove.x <0 && faceRight) || (hvMove.x >0 && !faceRight)){
             playerTurn();
         }
@@ -48,7 +48,11 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         //movement
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        // rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        Vector2 position = rb.position;
+        position.x += Input.GetAxis("Horizontal") * moveSpeed * Time.fixedDeltaTime;
+        position.y += Input.GetAxis("Vertical") * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(position);
     }
 
     private void playerTurn()
