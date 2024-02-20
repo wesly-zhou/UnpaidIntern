@@ -8,7 +8,7 @@ public class GameHandler : MonoBehaviour
 {
 
     public GameObject scoreText;
-    private int playerScore = 0;
+    private static int playerScore = 0;
 
     void Start()
     {

@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        gameTimer += 0.01f;
+        gameTimer += Time.fixedDeltaTime;
         if (gameTimer >= 1f) {
             gameTime -= 1;
             gameTimer = 0;
