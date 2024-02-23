@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
         } 
         if (gameTime <= 0) {
             gameTime = 0;
-            SceneManager.LoadScene ("EndGame"); 
+            SceneManager.LoadScene ("EndScene"); 
         }
     }
 

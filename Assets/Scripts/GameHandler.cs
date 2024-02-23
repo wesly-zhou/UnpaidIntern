@@ -15,29 +15,33 @@ public class GameHandler : MonoBehaviour
         UpdateScore();
     }
 
-    public void AddScore(int points)
+    public void StartGame()
     {
-        playerScore += points;
-        UpdateScore();
+        playerScore = 0;
+        SceneManager.LoadScene("LevelOne");
     }
 
-    void UpdateScore()
+    public void Resume()
     {
-        Text scoreTextB = scoreText.GetComponent<Text>();
-        if (SceneManager.GetActiveScene().name == "EndGame")
-        {
-            scoreTextB.text = "FINAL SCORE: " + playerScore;
-        }
-        else
-        {
-            scoreTextB.text = "SCORE: " + playerScore;
-        }
+        playerScore = 0;
+        SceneManager.LoadScene("LevelOne");
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     public void RestartGame()
     {
-        playerScore = 0;
-        SceneManager.LoadScene("SampleScene");
+        // Time.timeScale = 1f;
+        // GameHandler_PauseMenu.GameisPaused = false;
+        MainMenu();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
@@ -47,6 +51,25 @@ public class GameHandler : MonoBehaviour
         #else
                 Application.Quit(); 
         #endif
+    }
+
+    public void AddScore(int points)
+    {
+        playerScore += points;
+        UpdateScore();
+    }
+
+    void UpdateScore()
+    {
+        Text scoreTextB = scoreText.GetComponent<Text>();
+        if (SceneManager.GetActiveScene().name == "EndScene")
+        {
+            scoreTextB.text = "FINAL SCORE: " + playerScore;
+        }
+        else
+        {
+            scoreTextB.text = "SCORE: " + playerScore;
+        }
     }
 
 }
