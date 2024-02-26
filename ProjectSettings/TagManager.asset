@@ -9,6 +9,7 @@ TagManager:
   - Right
   - Top
   - Bottom
+  - NPC1
   layers:
   - Default
   - TransparentFX
