@@ -103,6 +103,7 @@ public class Interaction_Controller : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F)){
                 Debug.Log("Get exit key down");
                 finish_bubble.SetActive(false);
+                use_bubble.SetActive(true);
                 // ProgressBar.gameObject.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 0);
                 state = 0;
