@@ -8,9 +8,9 @@ public class GameInventory : MonoBehaviour {
       public bool InvIsOpen = true;
 
       //5 Inventory Items:
-      public static bool item1bool = false;
-      public static bool item2bool = false;
-      public static bool item3bool = false;
+      public static bool item1bool = true;
+      public static bool item2bool = true;
+      public static bool item3bool = true;
 
       public static int item1num = 0;
       public static int item2num = 0;
@@ -30,9 +30,9 @@ public class GameInventory : MonoBehaviour {
       }
 
       void InventoryDisplay(){
-            if (item1bool == true) {item1image.SetActive(true);} else {item1image.SetActive(false);}
-            if (item2bool == true) {item2image.SetActive(true);} else {item2image.SetActive(false);}
-            if (item3bool == true) {item3image.SetActive(true);} else {item3image.SetActive(false);}
+            if (item1bool == true) {item1image.SetActive(true);}
+            if (item2bool == true) {item2image.SetActive(true);}
+            if (item3bool == true) {item3image.SetActive(true);}
 
 
             // Item number updates. Comment out if each item is unique (2/2).
@@ -48,9 +48,9 @@ public class GameInventory : MonoBehaviour {
 
       public void InventoryAdd(string item){
             string foundItemName = item;
-            if (foundItemName == "item1") {item1bool = true; item1num ++;}
-            else if (foundItemName == "item2") {item2bool = true; item2num ++;}
-            else if (foundItemName == "item3") {item3bool = true; item3num ++;}
+            if (foundItemName == "item1") {item1num ++;}
+            else if (foundItemName == "item2") {item2num ++;}
+            else if (foundItemName == "item3") {item3num ++;}
             else { Debug.Log("This item does not exist to be added"); }
             InventoryDisplay();
       }
@@ -78,10 +78,6 @@ public class GameInventory : MonoBehaviour {
 
       // Reset all static inventory values on game restart.
       public void ResetAllInventory(){
-            item1bool = false;
-            item2bool = false;
-            item3bool = false;
-
             item1num = 0; // object name
             item2num = 0; // object name
             item3num = 0; // object name
