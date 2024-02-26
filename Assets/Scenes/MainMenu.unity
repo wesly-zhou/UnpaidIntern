@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Clean The Office
+  m_Text: Unpaid Intern
 --- !u!222 &50418805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -744,7 +744,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Get rid of the garbage in the office
+  m_Text: Fulfill the tasks given to you around the office
 --- !u!222 &1689540797
 CanvasRenderer:
   m_ObjectHideFlags: 0
