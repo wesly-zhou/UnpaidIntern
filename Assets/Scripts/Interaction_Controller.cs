@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
+// using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Interaction_Controller : MonoBehaviour
 {
     private BoxCollider2D interactionAreaCollider;
-
+    private int itemNum = 0;
     // ------------------- Bubble ------------------------
     public GameObject use_bubble;
     public GameObject give_bubble;
     public GameObject talk_bubble;
     public GameObject finish_bubble;
     public bool interactable = false;
+    public bool Talkabe = false;
     public int state = 0; // state 0: static, 1: interacting, 2: finished
     // ----------------------------------------------------
 
@@ -24,6 +25,7 @@ public class Interaction_Controller : MonoBehaviour
     private float currentTime;
     // -----------------------------------------------------
 
+    public Text inventoryText;
     public GameObject Entity;
     // Start is called before the first frame update
     void Start()
@@ -36,17 +38,23 @@ public class Interaction_Controller : MonoBehaviour
         }
 
     }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         // When object is static, notify user to use it
-        if (other.CompareTag("Player") && state == 0)
+        if (other.CompareTag("Player") && state == 0 && transform.parent.gameObject.CompareTag("Entity"))
         {
             use_bubble.SetActive(true);
             interactable = true;
         }
 
-        if (other.CompareTag("Player") && state == 2)
+        if (other.CompareTag("Player") && transform.parent.gameObject.CompareTag("NPC"))
+        {
+            give_bubble.SetActive(true);
+            Talkabe = true;
+        }
+
+        if (other.CompareTag("Player") && state == 2 && transform.parent.gameObject.CompareTag("Entity"))
         {
             interactable = true;
         }
@@ -54,10 +62,16 @@ public class Interaction_Controller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && transform.parent.gameObject.CompareTag("Entity"))
         {
             use_bubble.SetActive(false);
             interactable = false;
+        }
+
+        if (other.CompareTag("Player") && transform.parent.gameObject.CompareTag("NPC"))
+        {
+            give_bubble.SetActive(false);
+            Talkabe = false;
         }
     }
 
@@ -86,6 +100,7 @@ public class Interaction_Controller : MonoBehaviour
                 finish_bubble.SetActive(true);
                 state = 2;
                 Entity.GetComponent<Animator>().SetInteger("State", 2);
+                interactable = true;
             }
         }
         // Interact with object
@@ -98,11 +113,23 @@ public class Interaction_Controller : MonoBehaviour
                 ShowProgressBar();
             }
         }
+
+        // Interact with NPC
+        if(Talkabe == true){
+            if (Input.GetKeyDown(KeyCode.F)){
+                Debug.Log("Get enter key down");
+                give_bubble.SetActive(false);
+            // TODO: Detect if fit the requirement to give and remove items from inventory
+            }
+        }
+
         // Finish interacting with object
         if(interactable == true && state == 2 && isProcessing == false){
             if (Input.GetKeyDown(KeyCode.F)){
                 Debug.Log("Get exit key down");
                 finish_bubble.SetActive(false);
+                itemNum++;
+                inventoryText.text = itemNum.ToString();
                 use_bubble.SetActive(true);
                 // ProgressBar.gameObject.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 0);
@@ -111,5 +138,7 @@ public class Interaction_Controller : MonoBehaviour
                 
             }
         }
+
+
     }
 }

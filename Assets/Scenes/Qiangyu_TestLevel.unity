@@ -1004,6 +1004,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22, y: 0.89}
   m_EdgeRadius: 0
+--- !u!1 &808399023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6955045558625238411, guid: b82a88e244490454bbb701a87d05cba1, type: 3}
+  m_PrefabInstance: {fileID: 5068190084021467349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &830411680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4648,11 +4653,11 @@ PrefabInstance:
     - target: {fileID: 5168150917082843971, guid: b82a88e244490454bbb701a87d05cba1, type: 3}
       propertyPath: Entity
       value: 
-      objectReference: {fileID: 5068190084021467350}
+      objectReference: {fileID: 808399023}
     - target: {fileID: 5168150917082843971, guid: b82a88e244490454bbb701a87d05cba1, type: 3}
       propertyPath: inventoryText
       value: 
-      objectReference: {fileID: 1771426504}
+      objectReference: {fileID: 238991990}
     - target: {fileID: 6438972098625529436, guid: b82a88e244490454bbb701a87d05cba1, type: 3}
       propertyPath: m_Size.x
       value: 2.402962
@@ -4690,8 +4695,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b82a88e244490454bbb701a87d05cba1, type: 3}
---- !u!1 &5068190084021467350 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6955045558625238411, guid: b82a88e244490454bbb701a87d05cba1, type: 3}
-  m_PrefabInstance: {fileID: 5068190084021467349}
-  m_PrefabAsset: {fileID: 0}
