@@ -9,6 +9,8 @@ TagManager:
   - PauseMenu
   - Bubble
   - Entity
+  - Detect_Area
+  - NPC
   layers:
   - Default
   - TransparentFX
