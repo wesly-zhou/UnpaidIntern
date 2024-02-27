@@ -8,6 +8,7 @@ public class Interaction_Controller : MonoBehaviour
 {
     private BoxCollider2D interactionAreaCollider;
     private int itemNum = 0;
+    
     // ------------------- Bubble ------------------------
     public GameObject use_bubble;
     public GameObject give_bubble;
@@ -25,7 +26,12 @@ public class Interaction_Controller : MonoBehaviour
     private float currentTime;
     // -----------------------------------------------------
 
+    // ------------------ Inventory sys --------------------
     public Text inventoryText;
+    public GameObject InventorySystem;
+    // -----------------------------------------------------
+
+    
     public GameObject Entity;
     // Start is called before the first frame update
     void Start()
