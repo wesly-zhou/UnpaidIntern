@@ -11,11 +11,10 @@ public class Interaction_Controller : MonoBehaviour
     
     // ------------------- Bubble ------------------------
     public GameObject use_bubble;
-    public GameObject give_bubble;
-    public GameObject talk_bubble;
     public GameObject finish_bubble;
+    public GameObject start_state;
+    public GameObject end_state;
     public bool interactable = false;
-    public bool Talkabe = false;
     public int state = 0; // state 0: static, 1: interacting, 2: finished
     // ----------------------------------------------------
 
@@ -28,7 +27,6 @@ public class Interaction_Controller : MonoBehaviour
 
     // ------------------ Inventory sys --------------------
     public Text inventoryText;
-    public GameObject InventorySystem;
     // -----------------------------------------------------
 
     
@@ -48,19 +46,12 @@ public class Interaction_Controller : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // When object is static, notify user to use it
-        if (other.CompareTag("Player") && state == 0 && transform.parent.gameObject.CompareTag("Entity"))
+        if (state == 0)
         {
             use_bubble.SetActive(true);
             interactable = true;
         }
-
-        if (other.CompareTag("Player") && transform.parent.gameObject.CompareTag("NPC"))
-        {
-            give_bubble.SetActive(true);
-            Talkabe = true;
-        }
-
-        if (other.CompareTag("Player") && state == 2 && transform.parent.gameObject.CompareTag("Entity"))
+        if (state == 2 )
         {
             interactable = true;
         }
@@ -68,17 +59,8 @@ public class Interaction_Controller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && transform.parent.gameObject.CompareTag("Entity"))
-        {
-            use_bubble.SetActive(false);
-            interactable = false;
-        }
-
-        if (other.CompareTag("Player") && transform.parent.gameObject.CompareTag("NPC"))
-        {
-            give_bubble.SetActive(false);
-            Talkabe = false;
-        }
+        use_bubble.SetActive(false);
+        interactable = false;
     }
 
     private void ShowProgressBar()
@@ -90,8 +72,7 @@ public class Interaction_Controller : MonoBehaviour
         ProgressBar.value = currentTime;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isProcessing == true){
             if (currentTime < totalTime)
@@ -107,12 +88,12 @@ public class Interaction_Controller : MonoBehaviour
                 state = 2;
                 Entity.GetComponent<Animator>().SetInteger("State", 2);
                 interactable = true;
+                end_state.SetActive(true);
             }
         }
         // Interact with object
         if(interactable == true && state == 0 && isProcessing == false){
             if (Input.GetKeyDown(KeyCode.F)){
-                Debug.Log("Get enter key down");
                 use_bubble.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 1);
                 state = 1;
@@ -120,31 +101,20 @@ public class Interaction_Controller : MonoBehaviour
             }
         }
 
-        // Interact with NPC
-        if(Talkabe == true){
-            if (Input.GetKeyDown(KeyCode.F)){
-                Debug.Log("Get enter key down");
-                give_bubble.SetActive(false);
-            // TODO: Detect if fit the requirement to give and remove items from inventory
-            }
-        }
-
         // Finish interacting with object
-        if(interactable == true && state == 2 && isProcessing == false){
-            if (Input.GetKeyDown(KeyCode.F)){
-                Debug.Log("Get exit key down");
+        if(interactable == true && state == 2 && isProcessing == false)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
                 finish_bubble.SetActive(false);
                 itemNum++;
                 inventoryText.text = itemNum.ToString();
                 use_bubble.SetActive(true);
-                // ProgressBar.gameObject.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 0);
                 state = 0;
-                // TODO: Add item to the inventory
+                end_state.SetActive(false);
                 
             }
         }
-
-
     }
 }

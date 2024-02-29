@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //You can adjust the speed in the Unity editor
-    public float moveSpeed = 5f;
+    public float moveSpeed = 2f;
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool faceRight = true;
