@@ -44,12 +44,13 @@ public class NPC_Controller : MonoBehaviour
         // int inventoryNum4 = int.Parse(inventoryText4.text);
         // int inventoryNum5 = int.Parse(inventoryText5.text);
         if(interactable == true && Input.GetKeyDown(KeyCode.F)){
-            give_bubble.SetActive(false);
-            request_bubble.SetActive(false);
+            
             if (inventoryNum1 >= itemNum1 && inventoryNum2 >= itemNum2 &&
             inventoryNum3 >= itemNum3)
             // && inventoryNum4 >= itemNum4 && inventoryNum5 >= itemNum5)
             {
+                give_bubble.SetActive(false);
+                request_bubble.SetActive(false);
                 inventoryNum1 -= itemNum1;
                 inventoryNum2 -= itemNum2;
                 inventoryNum3 -= itemNum3;

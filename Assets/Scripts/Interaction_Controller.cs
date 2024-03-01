@@ -51,7 +51,21 @@ public class Interaction_Controller : MonoBehaviour
             use_bubble.SetActive(true);
             interactable = true;
         }
-        if (state == 2 )
+        if (state == 2 || state == 1)
+        {
+            interactable = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        // When object is static, notify user to use it
+        if (state == 0)
+        {
+            use_bubble.SetActive(true);
+            interactable = true;
+        }
+        if (state == 2 || state == 1)
         {
             interactable = true;
         }
@@ -87,34 +101,34 @@ public class Interaction_Controller : MonoBehaviour
                 finish_bubble.SetActive(true);
                 state = 2;
                 Entity.GetComponent<Animator>().SetInteger("State", 2);
-                interactable = true;
+                // interactable = true;
                 end_state.SetActive(true);
             }
         }
         // Interact with object
-        if(interactable == true && state == 0 && isProcessing == false){
-            if (Input.GetKeyDown(KeyCode.F)){
+        if(Input.GetKeyDown(KeyCode.F)){
+            if (interactable == true && state == 0 && isProcessing == false){
                 use_bubble.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 1);
                 state = 1;
                 ShowProgressBar();
             }
-        }
+        
 
         // Finish interacting with object
-        if(interactable == true && state == 2 && isProcessing == false)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
+            else if(interactable == true && state == 2 && isProcessing == false)
             {
-                finish_bubble.SetActive(false);
-                itemNum++;
-                inventoryText.text = itemNum.ToString();
-                use_bubble.SetActive(true);
-                Entity.GetComponent<Animator>().SetInteger("State", 0);
-                state = 0;
-                end_state.SetActive(false);
+                
+                    finish_bubble.SetActive(false);
+                    itemNum++;
+                    inventoryText.text = itemNum.ToString();
+                    use_bubble.SetActive(true);
+                    Entity.GetComponent<Animator>().SetInteger("State", 0);
+                    state = 0;
+                    end_state.SetActive(false);
+                    
                 
             }
-        }
+    }
     }
 }
