@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9a79b64dab6537046ac0880ca71c4fe7
+guid: 067985fe0cab0844987d120509fbf4c9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CharacterSpritesheet_256x256 (1)_0
+      name: NPC2 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e9a65ffee28ffa49a1c80f26748cfa3
-      internalID: 1058882856
+      spriteID: eeccbfda4537f1749a0852c2d32fcab6
+      internalID: -976918806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterSpritesheet_256x256 (1)_1
+      name: NPC2 1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed2241ec668e20844aa0888ab37799ef
-      internalID: -751227889
+      spriteID: bd4bd40a88fbdc1408c0db548ecdd72b
+      internalID: 1185710407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterSpritesheet_256x256 (1)_2
+      name: NPC2 1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbef4c6f0ac67944fa0d39655f195285
-      internalID: -730102526
+      spriteID: 8e529e33a8c76524094c0db7a989703f
+      internalID: 1968289752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterSpritesheet_256x256 (1)_3
+      name: NPC2 1_3
       rect:
         serializedVersion: 2
         x: 0
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e80308a93d09eab408ac878adbf06a91
-      internalID: 864613648
+      spriteID: 80a60846d1321574a99623dc592f07da
+      internalID: 2099774970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterSpritesheet_256x256 (1)_4
+      name: NPC2 1_4
       rect:
         serializedVersion: 2
         x: 64
@@ -221,8 +221,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d95cb41545e90e843a810bc3be8122d4
-      internalID: 2139639689
+      spriteID: 37715cb9a00ba8741b4212ddfeed3292
+      internalID: -804604665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC2 1_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a49302e0fc8985459fd7a5b6a1750e7
+      internalID: 687201410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC2 1_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffd20d6a6260d234b9e15cfaa20ce0a5
+      internalID: -2055943704
       vertices: []
       indices: 
       edges: []
@@ -238,11 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CharacterSpritesheet_256x256 (1)_0: 1058882856
-      CharacterSpritesheet_256x256 (1)_1: -751227889
-      CharacterSpritesheet_256x256 (1)_2: -730102526
-      CharacterSpritesheet_256x256 (1)_3: 864613648
-      CharacterSpritesheet_256x256 (1)_4: 2139639689
+      NPC2 1_0: -976918806
+      NPC2 1_1: 1185710407
+      NPC2 1_2: 1968289752
+      NPC2 1_3: 2099774970
+      NPC2 1_4: -804604665
+      NPC2 1_5: 687201410
+      NPC2 1_6: -2055943704
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
