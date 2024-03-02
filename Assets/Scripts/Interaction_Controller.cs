@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class Interaction_Controller : MonoBehaviour
 {
+    
     private BoxCollider2D interactionAreaCollider;
     private int itemNum = 0;
-    
+    // public static bool isTriggered = false;
     // ------------------- Bubble ------------------------
     public GameObject use_bubble;
     public GameObject finish_bubble;
@@ -45,34 +46,54 @@ public class Interaction_Controller : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Player" + other.transform.position.y + transform.name + transform.position.y);
+        if (other.CompareTag("Player") && other.transform.position.y > transform.position.y)
+        {   
+            Debug.Log("Player is above the object");
+            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder + 5;
+        }
+        else{
+            Debug.Log("Player is below the object");
+        }
+        if (NPC_Controller.isTriggered && other.gameObject.CompareTag("Player")) return;
         // When object is static, notify user to use it
         if (state == 0)
         {
+            NPC_Controller.isTriggered = true;
             use_bubble.SetActive(true);
             interactable = true;
         }
         if (state == 2 || state == 1)
         {
+            NPC_Controller.isTriggered = true;
             interactable = true;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        // When object is static, notify user to use it
-        if (state == 0)
-        {
-            use_bubble.SetActive(true);
-            interactable = true;
-        }
-        if (state == 2 || state == 1)
-        {
-            interactable = true;
-        }
-    }
+    // private void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if (NPC_Controller.isTriggered && other.gameObject.CompareTag("Player")) return;
+    //     // When object is static, notify user to use it
+    //     if (state == 0)
+    //     {
+    //         NPC_Controller.isTriggered = true;
+    //         use_bubble.SetActive(true);
+    //         interactable = true;
+    //     }
+    //     if (state == 2 || state == 1)
+    //     {
+    //         NPC_Controller.isTriggered = true;
+    //         interactable = true;
+    //     }
+    // }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other.CompareTag("Player")){
+            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder - 5;
+        }
+        
+        NPC_Controller.isTriggered = false;
         use_bubble.SetActive(false);
         interactable = false;
     }
@@ -86,7 +107,7 @@ public class Interaction_Controller : MonoBehaviour
         ProgressBar.value = currentTime;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (isProcessing == true){
             if (currentTime < totalTime)
@@ -107,7 +128,7 @@ public class Interaction_Controller : MonoBehaviour
         }
         // Interact with object
         if(Input.GetKeyDown(KeyCode.F)){
-            if (interactable == true && state == 0 && isProcessing == false){
+            if (interactable == true && state == 0 && isProcessing == false && NPC_Controller.isTriggered == false){
                 use_bubble.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 1);
                 state = 1;
