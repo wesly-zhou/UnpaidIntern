@@ -128,7 +128,7 @@ public class Interaction_Controller : MonoBehaviour
         }
         // Interact with object
         if(Input.GetKeyDown(KeyCode.F)){
-            if (interactable == true && state == 0 && isProcessing == false && NPC_Controller.isTriggered == false){
+            if (interactable == true && state == 0 && isProcessing == false && NPC_Controller.isTriggered == true){
                 use_bubble.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 1);
                 state = 1;
