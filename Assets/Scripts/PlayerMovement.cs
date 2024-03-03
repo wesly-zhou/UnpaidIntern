@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             GetComponent<Animator>().SetBool("status", false);
-            audioSource.Stop(); // 停止播放音效
+            audioSource.Stop(); // Stop the sound if the player is not moving
         }
     }
 

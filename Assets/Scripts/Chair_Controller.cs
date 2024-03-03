@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Chair_Controller : MonoBehaviour
 {
+
+    // public AnimationCurve speedCurve;
     public Animator animator; 
     public float Speed;
-    public string animationName; 
+    private string animationName = "Chair_loop"; 
     // public int startFrame; 
     // public int endFrame; 
     private int frameRate = 12; 
     private bool isPlaying = false;
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && isPlaying == false)
+        if (other.gameObject.CompareTag("PlayerCollider") && isPlaying == false)
         {
             string pattern = @"\d+$";
             Match match = Regex.Match(GetComponent<SpriteRenderer>().sprite.name, pattern);

@@ -1,17 +1,29 @@
 // using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NPC_Controller : MonoBehaviour
 {
+    
+    public int NPC_State = 0; // 0: Enter, 1: Wait, 2: Leave, 3: Angry
+    // -----------------------------------------------------------
+    public int FaceDirection = 1;
+    public float moveSpeed = 1;
+    private float randomDistance;
+    private Rigidbody2D rb; 
+    private float FixedDisdance = 5f;
+    private Vector2 TargetPosition_Fixed;
+    private Vector2 TargetPosition_Random;
+    // -----------------------------------------------------------
     public static bool isTriggered = false;
     private BoxCollider2D interactionAreaCollider;
     public static int Max_task_num = 3;
     public static int Machine_num = 3;
     // 1 = paper, 2 = soda, 3 = water
-    private int itemNum1 = 0, itemNum2 = 0, itemNum3 = 0, itemNum4 = 0, itemNum5 = 0;
+    // private int itemNum1 = 0, itemNum2 = 0, itemNum3 = 0, itemNum4 = 0, itemNum5 = 0;
     private int inventoryNum1, inventoryNum2, inventoryNum3, inventoryNum4, inventoryNum5;
     private int[] inventoryInfo = new int[Machine_num];
     //itemNum4 = 0, itemNum5 = 0;
@@ -26,11 +38,49 @@ public class NPC_Controller : MonoBehaviour
      // Create a set to store the requirement of each item
     private int[] NPC_Requirement = new int[Machine_num];
     private int[] cur_task;
+
+    // Waiting Bar
+    public Slider ProgressBar;
+    public float waitTime = 5f;
+    private Image fillImage;
+    private float currentTime;
+
+    // 
+    public int cur_task_num;
+    private void SetupProgressBar()
+    {
+        // ProgressBar.gameObject.SetActive(true);
+        // isProcessing = true;
+        fillImage = ProgressBar.fillRect.GetComponent<Image>();
+        ProgressBar.maxValue = waitTime;
+        // ProgressBar.minValue = 0;
+        ProgressBar.value = waitTime;
+        currentTime = waitTime;
+    }
+
     void Start()
     {
-        
+        transform.parent.localScale = new Vector3(transform.parent.localScale.x * FaceDirection, transform.parent.localScale.y, 1);
+        give_bubble.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);
+        give_bubble.transform.position = new Vector3(give_bubble.transform.position.x * FaceDirection, give_bubble.transform.position.y, give_bubble.transform.position.z);
+        request_bubble.transform.localScale = new Vector3(request_bubble.transform.localScale.x * FaceDirection, request_bubble.transform.localScale.y, 1);
+        request_bubble.transform.position = new Vector3(request_bubble.transform.position.x * FaceDirection, request_bubble.transform.position.y, give_bubble.transform.position.z);
+        Debug.Log(request_bubble.transform.position);
+        // ProgressBar.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);
+
+        // Set the initial state of the NPC, -1 is because the NPC must move for a short distance when it is created
+        NPC_State = -1;
+        // Generate a random distance for the NPC continue to move
+        randomDistance = Random.Range(5f, 10f);
+        // Debug.Log("Random distance: " + randomDistance);
+        // When the NPC is created, moving forward for a certain distance
+        rb = transform.parent.GetComponent<Rigidbody2D>();
+        TargetPosition_Fixed = rb.position + new Vector2(FixedDisdance * FaceDirection, 0) ;
+        TargetPosition_Random = TargetPosition_Fixed + new Vector2(randomDistance * FaceDirection, 0) ;
+        // Debug.Log("TargetPosition_Random: " + TargetPosition_Random);
+
         // Randomly generate the number of tasks
-        int cur_task_num = Random.Range(1, Max_task_num + 1);
+        cur_task_num = Random.Range(1, Max_task_num + 1);
         cur_task = new int[cur_task_num];
         interactionAreaCollider = GetComponent<BoxCollider2D>();
         if (interactionAreaCollider == null || !interactionAreaCollider.gameObject.CompareTag("Detect_Area"))
@@ -51,7 +101,7 @@ public class NPC_Controller : MonoBehaviour
         // Judge the number of tasks and show the corresponding task
         if (cur_task_num == 1)
         {
-            Debug.Log(cur_task);
+            // Debug.Log(cur_task);
             Debug.Log("inventory_sprites_" + cur_task[0].ToString());
             // Single_task.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("inventory_sprites_" + cur_task[0].ToString());
             Single_task.GetComponentInChildren<SpriteRenderer>().sprite = Resources.LoadAll<Sprite>("inventory_sprites")[cur_task[0]];
@@ -78,6 +128,8 @@ public class NPC_Controller : MonoBehaviour
             Triple_task.SetActive(true);
         }
 
+        SetupProgressBar();
+
         
     }
 
@@ -85,21 +137,67 @@ public class NPC_Controller : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.transform.position.y > transform.parent.position.y)
         {   
-            Debug.Log("Player is above the object");
-            transform.parent.gameObject.GetComponent<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder + 5;
+            // Debug.Log("Player is above the object");
+            transform.parent.gameObject.GetComponent<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 5;
         }
         else{
-            Debug.Log("Player is below the object");
+            // Debug.Log("Player is below the object");
         }
         if (isTriggered && other.gameObject.CompareTag("Player")) return;
     
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && NPC_State == 1)
         {
             isTriggered = true;
             give_bubble.SetActive(true);
             interactable = true;
         }
+
+        if (other.gameObject.CompareTag("Boundary") && NPC_State == 2)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+
+        if (NPC_State == 0)
+        {
+           // Meet collider and stop
+           Debug.Log("Meet collider and stop! The collider name is: " + other.gameObject.name);
+           NPC_State = 1;
+           transform.parent.GetComponent<Animator>().SetInteger("State", 1);
+        }
         
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && other.transform.position.y > transform.parent.position.y)
+        {   
+            // Debug.Log("Player is above the object");
+            transform.parent.gameObject.GetComponent<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 5;
+        }
+        else{
+            // Debug.Log("Player is below the object");
+        }
+        if (isTriggered && other.gameObject.CompareTag("Player")) return;
+    
+        if (other.gameObject.CompareTag("Player") && NPC_State == 1)
+        {
+            isTriggered = true;
+            give_bubble.SetActive(true);
+            interactable = true;
+        }
+
+        if (other.gameObject.CompareTag("Boundary") && NPC_State == 2)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+
+        if (NPC_State == 0 && other.gameObject.CompareTag("PlayerView"))
+        {
+           // Meet collider and stop
+           Debug.Log("Meet collider and stop! The collider name is: " + other.gameObject.name);
+           NPC_State = 1;
+           transform.parent.GetComponent<Animator>().SetInteger("State", 1);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -108,10 +206,15 @@ public class NPC_Controller : MonoBehaviour
        
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.parent.gameObject.GetComponent<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder - 5;
+            transform.parent.gameObject.GetComponent<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder - 5;
             isTriggered = false;
             give_bubble.SetActive(false);
             interactable = false;
+        }
+
+        if (other.gameObject.CompareTag("Boundary"))
+        {
+            NPC_State = 0;
         }
         
     }
@@ -141,6 +244,41 @@ public class NPC_Controller : MonoBehaviour
                 inventoryInfo = new int[] { inventoryNum1, inventoryNum2, inventoryNum3, inventoryNum4, inventoryNum5};
                 break;
         }
+
+        if (NPC_State == 1){
+            transform.parent.GetComponent<BoxCollider2D>().enabled = true;
+            ProgressBar.gameObject.SetActive(true);
+            request_bubble.SetActive(true);
+            if (currentTime > 0)
+            {
+                currentTime -= Time.deltaTime;
+                ProgressBar.value = currentTime;
+                float progress = ProgressBar.value;
+                fillImage.color = Color.Lerp(Color.red, new Color32(66, 204, 30, 255), currentTime / waitTime);
+                
+
+                if (NPC_State == 2){
+                    // Interaction is interrupted
+                    transform.parent.GetComponent<BoxCollider2D>().enabled = false;
+                    return;
+                }
+            }
+            else
+            {
+                NPC_State = 3;
+                ProgressBar.gameObject.SetActive(false);
+                request_bubble.SetActive(false);
+                // TODO: Show angry animation
+                transform.parent.GetComponent<Animator>().SetInteger("State", 3);
+                Debug.Log("Did not get anything and get angry!");
+                // StartCoroutine(WaitAndPrint());
+                Invoke("DelayLeave", 3f);
+                // Debug.Log("already done?");
+                // transform.parent.rotation = Quaternion.Euler(0, 180, 0);
+                
+                
+            }
+        }
         
         if(interactable == true && Input.GetKeyDown(KeyCode.F)){
             
@@ -152,8 +290,15 @@ public class NPC_Controller : MonoBehaviour
                 if (inventoryInfo[cur_task[i]] < NPC_Requirement[cur_task[i]])
                 {
                     Debug.Log("You don't have enough items to give");
-                    // TODO: Show angry animation and leave the scene
+                    // Show angry animation and leave the scene
+                    NPC_State = 3;
+                    transform.parent.GetComponent<Animator>().SetInteger("State", 3);
                     give_bubble.SetActive(false);
+                    request_bubble.SetActive(false);
+                    ProgressBar.gameObject.SetActive(false);
+                    // StartCoroutine(WaitAndPrint());
+                    Invoke("DelayLeave", 3f);
+                    // transform.parent.rotation = Quaternion.Euler(0, 180, 0);
                     return;
                 }
             }
@@ -167,6 +312,11 @@ public class NPC_Controller : MonoBehaviour
             {
                 inventoryInfo[i] -= NPC_Requirement[i];
             }
+            NPC_State = 2;
+            transform.parent.GetComponent<Animator>().SetInteger("State", 2);
+            transform.parent.GetComponent<BoxCollider2D>().enabled = false;
+            ProgressBar.gameObject.SetActive(false);
+            transform.parent.rotation = Quaternion.Euler(0, 180, 0);
             Debug.Log("After giving the items to the NPC, the inventory is: ");
             Debug.Log(string.Join(", ", inventoryInfo));
             switch(Machine_num){
@@ -191,6 +341,38 @@ public class NPC_Controller : MonoBehaviour
             }
         }
     }
+    void DelayLeave(){
+        transform.parent.GetComponent<BoxCollider2D>().enabled = false;
+        NPC_State = 2;
+        transform.parent.GetComponent<Animator>().SetInteger("State", 2);
+        transform.parent.rotation = Quaternion.Euler(0, 180, 0);
+    }
 
+    void FixedUpdate()
+    {
+        // Setup: Move the fixed distance and enter the scene
+        if (NPC_State == -1){
+            // ---------------------------------------------------Teporary solution-------------------------------------------------
+            rb.position = Vector2.MoveTowards(rb.position, new Vector2(100f * FaceDirection, 0) , moveSpeed * Time.deltaTime);
+            if (Vector2.Distance(rb.position, TargetPosition_Fixed) < 0.01f){
+                NPC_State = 0;
+            }
+        }
+
+        if (NPC_State == 0){
+            
+            rb.position = Vector2.MoveTowards(rb.position, new Vector2(100f * FaceDirection, 0), moveSpeed * Time.deltaTime);
+            if (Vector2.Distance(rb.position, TargetPosition_Random) < 0.01f){
+                NPC_State = 1;
+                transform.parent.GetComponent<Animator>().SetInteger("State", 1);
+            }
+        }
+        
+        if (NPC_State == 2){
+            // transform.parent.rotation = Quaternion.Euler(0, 180, 0);
+            // FaceDirection = -FaceDirection;
+            rb.position = Vector2.MoveTowards(rb.position, rb.position + new Vector2(100f * -FaceDirection, 0), moveSpeed * Time.deltaTime);
+        }
+    }
 
 }

@@ -57,40 +57,40 @@ public class Interaction_Controller : MonoBehaviour
         }
         if (NPC_Controller.isTriggered && other.gameObject.CompareTag("Player")) return;
         // When object is static, notify user to use it
-        if (state == 0)
+        if (other.CompareTag("Player") && state == 0)
         {
             NPC_Controller.isTriggered = true;
             use_bubble.SetActive(true);
             interactable = true;
         }
-        if (state == 2 || state == 1)
+        if (other.CompareTag("Player") && (state == 2 || state == 1))
         {
             NPC_Controller.isTriggered = true;
             interactable = true;
         }
     }
 
-    // private void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (NPC_Controller.isTriggered && other.gameObject.CompareTag("Player")) return;
-    //     // When object is static, notify user to use it
-    //     if (state == 0)
-    //     {
-    //         NPC_Controller.isTriggered = true;
-    //         use_bubble.SetActive(true);
-    //         interactable = true;
-    //     }
-    //     if (state == 2 || state == 1)
-    //     {
-    //         NPC_Controller.isTriggered = true;
-    //         interactable = true;
-    //     }
-    // }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (NPC_Controller.isTriggered && other.gameObject.CompareTag("Player")) return;
+        // When object is static, notify user to use it
+        if (other.CompareTag("Player") && state == 0)
+        {
+            NPC_Controller.isTriggered = true;
+            use_bubble.SetActive(true);
+            interactable = true;
+        }
+        if (other.CompareTag("Player") && (state == 2 || state == 1))
+        {
+            NPC_Controller.isTriggered = true;
+            interactable = true;
+        }
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player")){
-            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder - 5;
+            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder - 5;
         }
         
         NPC_Controller.isTriggered = false;
@@ -128,6 +128,7 @@ public class Interaction_Controller : MonoBehaviour
         }
         // Interact with object
         if(Input.GetKeyDown(KeyCode.F)){
+            Debug.Log(NPC_Controller.isTriggered);
             if (interactable == true && state == 0 && isProcessing == false && NPC_Controller.isTriggered == true){
                 use_bubble.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 1);

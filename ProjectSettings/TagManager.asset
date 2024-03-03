@@ -12,6 +12,8 @@ TagManager:
   - Detect_Area
   - NPC
   - Boundary
+  - PlayerView
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX
