@@ -8,13 +8,13 @@ using UnityEngine.UI;
 public class NPC_Controller : MonoBehaviour
 {
     
-    public int NPC_State = 0; // 0: Enter, 1: Wait, 2: Leave, 3: Angry
+    public int NPC_State; // -2: OutScene, -1: Enter, 0: InScene, 1: Wait, 2: Leave, 3: Angry
     // -----------------------------------------------------------
     public int FaceDirection = 1;
     public float moveSpeed = 1;
     private float randomDistance;
     private Rigidbody2D rb; 
-    private float FixedDisdance = 5f;
+    // private float FixedDisdance = 5f;
     private Vector2 TargetPosition_Fixed;
     private Vector2 TargetPosition_Random;
     // -----------------------------------------------------------
@@ -60,22 +60,22 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
-        transform.parent.localScale = new Vector3(transform.parent.localScale.x * FaceDirection, transform.parent.localScale.y, 1);
-        give_bubble.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);
-        give_bubble.transform.position = new Vector3(give_bubble.transform.position.x * FaceDirection, give_bubble.transform.position.y, give_bubble.transform.position.z);
-        request_bubble.transform.localScale = new Vector3(request_bubble.transform.localScale.x * FaceDirection, request_bubble.transform.localScale.y, 1);
-        request_bubble.transform.position = new Vector3(request_bubble.transform.position.x * FaceDirection, request_bubble.transform.position.y, give_bubble.transform.position.z);
-        Debug.Log(request_bubble.transform.position);
+        // transform.parent.localScale = new Vector3(transform.parent.localScale.x * FaceDirection, transform.parent.localScale.y, 1);
+        // give_bubble.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);
+        // give_bubble.transform.position = new Vector3(give_bubble.transform.position.x * FaceDirection, give_bubble.transform.position.y, give_bubble.transform.position.z);
+        // request_bubble.transform.localScale = new Vector3(request_bubble.transform.localScale.x * FaceDirection, request_bubble.transform.localScale.y, 1);
+        // request_bubble.transform.position = new Vector3(request_bubble.transform.position.x * FaceDirection, request_bubble.transform.position.y, give_bubble.transform.position.z);
+        // Debug.Log(request_bubble.transform.position);
         // ProgressBar.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);
 
         // Set the initial state of the NPC, -1 is because the NPC must move for a short distance when it is created
-        NPC_State = -1;
+        NPC_State = -2;
         // Generate a random distance for the NPC continue to move
         randomDistance = Random.Range(5f, 10f);
         // Debug.Log("Random distance: " + randomDistance);
         // When the NPC is created, moving forward for a certain distance
         rb = transform.parent.GetComponent<Rigidbody2D>();
-        TargetPosition_Fixed = rb.position + new Vector2(FixedDisdance * FaceDirection, 0) ;
+        
         TargetPosition_Random = TargetPosition_Fixed + new Vector2(randomDistance * FaceDirection, 0) ;
         // Debug.Log("TargetPosition_Random: " + TargetPosition_Random);
 
@@ -152,7 +152,7 @@ public class NPC_Controller : MonoBehaviour
             interactable = true;
         }
 
-        if (other.gameObject.CompareTag("Boundary") && NPC_State == 2)
+        if (other.gameObject.CompareTag("Destroy") && NPC_State == 2)
         {
             Destroy(transform.parent.gameObject);
         }
@@ -186,7 +186,7 @@ public class NPC_Controller : MonoBehaviour
             interactable = true;
         }
 
-        if (other.gameObject.CompareTag("Boundary") && NPC_State == 2)
+        if (other.gameObject.CompareTag("Destroy") && NPC_State == 2)
         {
             Destroy(transform.parent.gameObject);
         }
@@ -214,7 +214,8 @@ public class NPC_Controller : MonoBehaviour
 
         if (other.gameObject.CompareTag("Boundary"))
         {
-            NPC_State = 0;
+            NPC_State = -1;
+            TargetPosition_Fixed = rb.position + new Vector2(1f * FaceDirection, 0) ;
         }
         
     }
@@ -351,9 +352,17 @@ public class NPC_Controller : MonoBehaviour
     void FixedUpdate()
     {
         // Setup: Move the fixed distance and enter the scene
-        if (NPC_State == -1){
+        if (NPC_State == -2){
             // ---------------------------------------------------Teporary solution-------------------------------------------------
             rb.position = Vector2.MoveTowards(rb.position, new Vector2(100f * FaceDirection, 0) , moveSpeed * Time.deltaTime);
+            // if (Vector2.Distance(rb.position, TargetPosition_Fixed) < 0.01f){
+            //     NPC_State = 0;
+            // }
+        }
+
+        if (NPC_State == -1){
+            // ---------------------------------------------------Teporary solution-------------------------------------------------
+            rb.position = Vector2.MoveTowards(rb.position, TargetPosition_Fixed , moveSpeed * Time.deltaTime);
             if (Vector2.Distance(rb.position, TargetPosition_Fixed) < 0.01f){
                 NPC_State = 0;
             }
@@ -362,10 +371,10 @@ public class NPC_Controller : MonoBehaviour
         if (NPC_State == 0){
             
             rb.position = Vector2.MoveTowards(rb.position, new Vector2(100f * FaceDirection, 0), moveSpeed * Time.deltaTime);
-            if (Vector2.Distance(rb.position, TargetPosition_Random) < 0.01f){
-                NPC_State = 1;
-                transform.parent.GetComponent<Animator>().SetInteger("State", 1);
-            }
+            // if (Vector2.Distance(rb.position, TargetPosition_Random) < 0.01f){
+            //     NPC_State = 1;
+            //     transform.parent.GetComponent<Animator>().SetInteger("State", 1);
+            // }
         }
         
         if (NPC_State == 2){
