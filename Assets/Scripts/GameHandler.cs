@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
+    public WinConHandler manager;
 
     public void StartGame()
     {
@@ -24,9 +25,10 @@ public class GameHandler : MonoBehaviour
         MainMenu();
     }
 
-    public void NextLevel(int nextLevel)
+    public void NextLevel()
     {
-        SceneManager.LoadScene("Level" + nextLevel);
+        int previousLevel = manager.currentLevel;
+        SceneManager.LoadScene("Level " + (previousLevel + 1));
     }
 
     public void MainMenu()

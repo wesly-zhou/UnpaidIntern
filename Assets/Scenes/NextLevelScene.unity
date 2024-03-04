@@ -780,12 +780,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 74119547}
     m_Modifications:
     - target: {fileID: 76698342742832924, guid: 92cbec7e2724509448c3cb58e7b762d5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76698342742832924, guid: 92cbec7e2724509448c3cb58e7b762d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1441510317}
     - target: {fileID: 76698342742832924, guid: 92cbec7e2724509448c3cb58e7b762d5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 76698342742832924, guid: 92cbec7e2724509448c3cb58e7b762d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
+      value: NextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 76698342742832924, guid: 92cbec7e2724509448c3cb58e7b762d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

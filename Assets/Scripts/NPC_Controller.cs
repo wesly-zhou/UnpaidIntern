@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class NPC_Controller : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    // public WinConHandler manager;
     // --------------------------Sound Effect--------------------------
     public AudioClip FinishSound;//sound effect
     public AudioClip AngrySound;//sound effect
@@ -235,12 +235,12 @@ public class NPC_Controller : MonoBehaviour
     void Update()
     {
         switch(Machine_num){
-            case 3:
+            /* case 3:
                 inventoryNum1 = int.Parse(inventoryText1.text);
                 inventoryNum2 = int.Parse(inventoryText2.text);
                 inventoryNum3 = int.Parse(inventoryText3.text);
                 inventoryInfo = new int[] { inventoryNum1, inventoryNum2, inventoryNum3 };
-                break;
+                break; */
             case 4: 
                 inventoryNum1 = int.Parse(inventoryText1.text);
                 inventoryNum2 = int.Parse(inventoryText2.text);
@@ -327,6 +327,7 @@ public class NPC_Controller : MonoBehaviour
             Debug.Log(string.Join(", ", inventoryInfo));
             give_bubble.SetActive(false);
             request_bubble.SetActive(false);
+            // manager.numNPC -= 1;
             for(int i = 0; i < cur_task.Length; i++)
             {
                 inventoryInfo[i] -= NPC_Requirement[i];
