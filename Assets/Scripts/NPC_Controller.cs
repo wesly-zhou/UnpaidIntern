@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NPC_Controller : MonoBehaviour
 {
@@ -33,9 +34,7 @@ public class NPC_Controller : MonoBehaviour
     // private int itemNum1 = 0, itemNum2 = 0, itemNum3 = 0, itemNum4 = 0, itemNum5 = 0;
     private int inventoryNum1, inventoryNum2, inventoryNum3, inventoryNum4, inventoryNum5;
     private int[] inventoryInfo = new int[Machine_num];
-    //itemNum4 = 0, itemNum5 = 0;
     public Text inventoryText1, inventoryText2, inventoryText3, inventoryText4, inventoryText5;
-    //inventoryText4, inventoryText5;
     public bool interactable = false;
     public GameObject request_bubble;
     public GameObject give_bubble;
@@ -288,7 +287,8 @@ public class NPC_Controller : MonoBehaviour
                 transform.parent.GetComponent<Animator>().SetInteger("State", 3);
                 Debug.Log("Did not get anything and get angry!");
                 // StartCoroutine(WaitAndPrint());
-                Invoke("DelayLeave", 3f);
+                Invoke("EndGame", 3f);
+                
                 // Debug.Log("already done?");
                 // transform.parent.rotation = Quaternion.Euler(0, 180, 0);
                 
@@ -316,7 +316,7 @@ public class NPC_Controller : MonoBehaviour
                     request_bubble.SetActive(false);
                     ProgressBar.gameObject.SetActive(false);
                     // StartCoroutine(WaitAndPrint());
-                    Invoke("DelayLeave", 3f);
+                    Invoke("EndGame", 3f);
                     // transform.parent.rotation = Quaternion.Euler(0, 180, 0);
                     return;
                 }
@@ -369,6 +369,10 @@ public class NPC_Controller : MonoBehaviour
         NPC_State = 2;
         transform.parent.GetComponent<Animator>().SetInteger("State", 2);
         transform.parent.rotation = Quaternion.Euler(0, 180, 0);
+    }
+
+    void EndGame() {
+        SceneManager.LoadScene("LoseScene");
     }
 
     void FixedUpdate()
