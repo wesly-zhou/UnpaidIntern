@@ -24,7 +24,7 @@ public class GameHandler : MonoBehaviour
         MainMenu();
     }
 
-    public void NextLevel()
+    public void NextLevel(int nextLevel)
     {
         SceneManager.LoadScene("Level" + nextLevel);
     }
