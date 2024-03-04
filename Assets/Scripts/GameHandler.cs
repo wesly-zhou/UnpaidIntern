@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     public WinConHandler manager;
+    public Animator transition;
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level 1");
+        StartCoroutine(LoadLevel());
+        // SceneManager.LoadScene("Level 1");
     }
 
     public void Credits()
@@ -44,5 +46,10 @@ public class GameHandler : MonoBehaviour
                 Application.Quit(); 
         #endif
     }
-
+    IEnumerator LoadLevel()
+    {
+        transition.Play("OutScene");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Level 1");
+    }
 }
