@@ -7,9 +7,11 @@ using UnityEngine.UI;
 
 public class NPC_Controller : MonoBehaviour
 {
+    private ScoreManager scoreManager;
     // --------------------------Sound Effect--------------------------
     public AudioClip FinishSound;//sound effect
     public AudioClip AngrySound;//sound effect
+    public AudioClip GetScoreSound;//sound effect
     private AudioSource audioSource;
     // ----------------------------------------------------------------
 
@@ -67,6 +69,8 @@ public class NPC_Controller : MonoBehaviour
     {
         // Get the sound component
         audioSource = GetComponent<AudioSource>();
+        // Get the score manager
+        // scoreManager = transform.parent.GetComponent<ScoreManager>();
 
         // transform.parent.localScale = new Vector3(transform.parent.localScale.x * FaceDirection, transform.parent.localScale.y, 1);
         // give_bubble.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);

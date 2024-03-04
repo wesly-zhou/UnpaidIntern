@@ -28,6 +28,8 @@ public class Interaction_Controller : MonoBehaviour
 
     // ------------------ Inventory sys --------------------
     public Text inventoryText;
+    public Animator GetItem_Animation;
+    public AnimationClip GetItem;
     // -----------------------------------------------------
 
     private AudioSource audioSource;
@@ -156,6 +158,7 @@ public class Interaction_Controller : MonoBehaviour
                     Entity.GetComponent<Animator>().SetInteger("State", 0);
                     state = 0;
                     end_state.SetActive(false);
+                    GetItem_Animation.Play(GetItem.name);
                     
                 
             }

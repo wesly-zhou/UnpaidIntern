@@ -422,19 +422,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   use_bubble: {fileID: 5104238066070860911}
-  give_bubble: {fileID: 0}
-  talk_bubble: {fileID: 0}
   finish_bubble: {fileID: 2356126701810655193}
   start_state: {fileID: 0}
   end_state: {fileID: 6715069918783040641}
   interactable: 0
-  Talkabe: 0
   state: 0
   ProgressBar: {fileID: 7580782886800812491}
   isProcessing: 0
   totalTime: 5
   inventoryText: {fileID: 0}
-  InventorySystem: {fileID: 0}
+  GetItem_Animation: {fileID: 0}
+  GetItem: {fileID: 7400000, guid: e55df1f8b810ff146b43d986c586e65c, type: 2}
   Entity: {fileID: 2001117801058708386}
 --- !u!1 &2356126701810655193
 GameObject:
