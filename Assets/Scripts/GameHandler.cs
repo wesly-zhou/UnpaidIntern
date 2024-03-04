@@ -9,7 +9,7 @@ public class GameHandler : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void Credits()
@@ -22,6 +22,11 @@ public class GameHandler : MonoBehaviour
         Time.timeScale = 1f;
         GameHandler_PauseMenu.GameisPaused = false;
         MainMenu();
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Level" + nextLevel);
     }
 
     public void MainMenu()
