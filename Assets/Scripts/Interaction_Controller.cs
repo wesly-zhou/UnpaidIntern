@@ -30,12 +30,14 @@ public class Interaction_Controller : MonoBehaviour
     public Text inventoryText;
     // -----------------------------------------------------
 
-    
+    private AudioSource audioSource;
     public GameObject Entity;
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        audioSource = GetComponent<AudioSource>();//get sound
+        audioSource.Stop();
         interactionAreaCollider = GetComponent<BoxCollider2D>();
         if (interactionAreaCollider == null || !interactionAreaCollider.gameObject.CompareTag("Detect_Area"))
         {
@@ -124,6 +126,7 @@ public class Interaction_Controller : MonoBehaviour
                 Entity.GetComponent<Animator>().SetInteger("State", 2);
                 // interactable = true;
                 end_state.SetActive(true);
+                audioSource.Stop();
             }
         }
         // Interact with object
@@ -133,6 +136,11 @@ public class Interaction_Controller : MonoBehaviour
                 use_bubble.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 1);
                 state = 1;
+                if (!audioSource.isPlaying)
+                    {
+                        // audioSource.clip = walkSound;
+                        audioSource.Play();
+                    }
                 ShowProgressBar();
             }
         

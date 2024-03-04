@@ -7,7 +7,12 @@ using UnityEngine.UI;
 
 public class NPC_Controller : MonoBehaviour
 {
-    
+    // --------------------------Sound Effect--------------------------
+    public AudioClip FinishSound;//sound effect
+    public AudioClip AngrySound;//sound effect
+    private AudioSource audioSource;
+    // ----------------------------------------------------------------
+
     public int NPC_State; // -2: OutScene, -1: Enter, 0: InScene, 1: Wait, 2: Leave, 3: Angry
     // -----------------------------------------------------------
     public int FaceDirection = 1;
@@ -60,6 +65,9 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
+        // Get the sound component
+        audioSource = GetComponent<AudioSource>();
+
         // transform.parent.localScale = new Vector3(transform.parent.localScale.x * FaceDirection, transform.parent.localScale.y, 1);
         // give_bubble.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);
         // give_bubble.transform.position = new Vector3(give_bubble.transform.position.x * FaceDirection, give_bubble.transform.position.y, give_bubble.transform.position.z);
@@ -267,6 +275,9 @@ public class NPC_Controller : MonoBehaviour
             else
             {
                 NPC_State = 3;
+                // Play angry sound
+                audioSource.clip = AngrySound;
+                audioSource.Play();
                 ProgressBar.gameObject.SetActive(false);
                 request_bubble.SetActive(false);
                 // TODO: Show angry animation
@@ -293,6 +304,9 @@ public class NPC_Controller : MonoBehaviour
                     Debug.Log("You don't have enough items to give");
                     // Show angry animation and leave the scene
                     NPC_State = 3;
+                    // Play angry sound
+                    audioSource.clip = AngrySound;
+                    audioSource.Play();
                     transform.parent.GetComponent<Animator>().SetInteger("State", 3);
                     give_bubble.SetActive(false);
                     request_bubble.SetActive(false);
@@ -314,6 +328,9 @@ public class NPC_Controller : MonoBehaviour
                 inventoryInfo[i] -= NPC_Requirement[i];
             }
             NPC_State = 2;
+            // Play finish sound
+            audioSource.clip = FinishSound;
+            audioSource.Play();
             transform.parent.GetComponent<Animator>().SetInteger("State", 2);
             transform.parent.GetComponent<BoxCollider2D>().enabled = false;
             ProgressBar.gameObject.SetActive(false);
