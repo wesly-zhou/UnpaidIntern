@@ -161,6 +161,7 @@ public class Interaction_Controller : MonoBehaviour
                         audioSource.Play();
                     }
                     finish_bubble.SetActive(false);
+                    itemNum = int.Parse(inventoryText.text);
                     itemNum++;
                     inventoryText.text = itemNum.ToString();
                     use_bubble.SetActive(true);
