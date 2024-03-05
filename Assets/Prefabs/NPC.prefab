@@ -845,7 +845,7 @@ MonoBehaviour:
   GetScoreSound: {fileID: 0}
   NPC_State: 0
   FaceDirection: 1
-  moveSpeed: 0
+  moveSpeed: 1
   Max_task_num: 3
   Machine_num: 3
   inventoryText1: {fileID: 0}
@@ -859,8 +859,8 @@ MonoBehaviour:
   Single_task: {fileID: 1171862911390453622}
   Double_task: {fileID: 6136360877772143854}
   Triple_task: {fileID: 193458891002072918}
-  ProgressBar: {fileID: 0}
-  waitTime: 5
+  ProgressBar: {fileID: 7697653221976818125}
+  waitTime: 60
 --- !u!82 &6382317148702849605
 AudioSource:
   m_ObjectHideFlags: 0
