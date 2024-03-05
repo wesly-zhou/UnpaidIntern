@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class NPC_Controller : MonoBehaviour
 {
+    private Camera MainCamera;
     // public WinConHandler manager;
     // --------------------------Sound Effect--------------------------
     public AudioClip FinishSound;//sound effect
@@ -28,12 +29,12 @@ public class NPC_Controller : MonoBehaviour
     // -----------------------------------------------------------
     public static bool isTriggered = false;
     private BoxCollider2D interactionAreaCollider;
-    public static int Max_task_num = 3;
-    public static int Machine_num = 3;
+    public int Max_task_num = 3;
+    public int Machine_num = 3;
     // 1 = paper, 2 = soda, 3 = water
     // private int itemNum1 = 0, itemNum2 = 0, itemNum3 = 0, itemNum4 = 0, itemNum5 = 0;
     private int inventoryNum1, inventoryNum2, inventoryNum3, inventoryNum4, inventoryNum5;
-    private int[] inventoryInfo = new int[Machine_num];
+    private int[] inventoryInfo;
     public Text inventoryText1, inventoryText2, inventoryText3, inventoryText4, inventoryText5;
     public bool interactable = false;
     public GameObject request_bubble;
@@ -42,7 +43,7 @@ public class NPC_Controller : MonoBehaviour
     public GameObject Double_task;
     public GameObject Triple_task;
      // Create a set to store the requirement of each item
-    private int[] NPC_Requirement = new int[Machine_num];
+    private int[] NPC_Requirement;
     private int[] cur_task;
 
     // Waiting Bar
@@ -66,11 +67,13 @@ public class NPC_Controller : MonoBehaviour
 
     void Start()
     {
+        NPC_Requirement = new int[Machine_num];
+        inventoryInfo = new int[Machine_num];
         // Get the sound component
         audioSource = GetComponent<AudioSource>();
         // Get the score manager
         // scoreManager = transform.parent.GetComponent<ScoreManager>();
-
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         // transform.parent.localScale = new Vector3(transform.parent.localScale.x * FaceDirection, transform.parent.localScale.y, 1);
         // give_bubble.transform.localScale = new Vector3(give_bubble.transform.localScale.x * FaceDirection, give_bubble.transform.localScale.y, 1);
         // give_bubble.transform.position = new Vector3(give_bubble.transform.position.x * FaceDirection, give_bubble.transform.position.y, give_bubble.transform.position.z);
@@ -123,7 +126,7 @@ public class NPC_Controller : MonoBehaviour
         }
         else if (cur_task_num == 2)
         {   
-            Debug.Log(cur_task);
+            // Debug.Log(cur_task);
             Debug.Log("inventory_sprites_" + cur_task[0].ToString());
             Double_task.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.LoadAll<Sprite>("inventory_sprites")[cur_task[0]];
             Double_task.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = Resources.LoadAll<Sprite>("inventory_sprites")[cur_task[1]];
@@ -131,7 +134,7 @@ public class NPC_Controller : MonoBehaviour
         }
         else if (cur_task_num == 3)
         {
-            Debug.Log(cur_task);
+            // Debug.Log(cur_task);
             Debug.Log("inventory_sprites_" + cur_task[0].ToString());
             Triple_task.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.LoadAll<Sprite>("inventory_sprites")[cur_task[0]];
             Triple_task.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = Resources.LoadAll<Sprite>("inventory_sprites")[cur_task[1]];
@@ -140,6 +143,8 @@ public class NPC_Controller : MonoBehaviour
         }
 
         SetupProgressBar();
+        Debug.Log(string.Join(", ", inventoryInfo));
+        
 
         
     }
@@ -234,12 +239,12 @@ public class NPC_Controller : MonoBehaviour
     void Update()
     {
         switch(Machine_num){
-            /* case 3:
+            case 3:
                 inventoryNum1 = int.Parse(inventoryText1.text);
                 inventoryNum2 = int.Parse(inventoryText2.text);
                 inventoryNum3 = int.Parse(inventoryText3.text);
                 inventoryInfo = new int[] { inventoryNum1, inventoryNum2, inventoryNum3 };
-                break; */
+                break; 
             case 4: 
                 inventoryNum1 = int.Parse(inventoryText1.text);
                 inventoryNum2 = int.Parse(inventoryText2.text);
@@ -287,6 +292,7 @@ public class NPC_Controller : MonoBehaviour
                 transform.parent.GetComponent<Animator>().SetInteger("State", 3);
                 Debug.Log("Did not get anything and get angry!");
                 // StartCoroutine(WaitAndPrint());
+                CameraFocus();
                 Invoke("EndGame", 3f);
                 
                 // Debug.Log("already done?");
@@ -316,6 +322,7 @@ public class NPC_Controller : MonoBehaviour
                     request_bubble.SetActive(false);
                     ProgressBar.gameObject.SetActive(false);
                     // StartCoroutine(WaitAndPrint());
+                    CameraFocus();
                     Invoke("EndGame", 3f);
                     // transform.parent.rotation = Quaternion.Euler(0, 180, 0);
                     return;
@@ -372,6 +379,7 @@ public class NPC_Controller : MonoBehaviour
     }
 
     void EndGame() {
+        
         SceneManager.LoadScene("LoseScene");
     }
 
@@ -408,6 +416,21 @@ public class NPC_Controller : MonoBehaviour
             // FaceDirection = -FaceDirection;
             rb.position = Vector2.MoveTowards(rb.position, rb.position + new Vector2(100f * -FaceDirection, 0), moveSpeed * Time.deltaTime);
         }
+    }
+
+    private void CameraFocus(){
+        
+        // Vector3 newPosition = Vector3.Lerp(MainCamera.transform.position, transform.position, 10f * Time.deltaTime);
+        // newPosition.z = MainCamera.transform.position.z; 
+        // MainCamera.transform.position = newPosition;
+        
+        MainCamera.GetComponent<CameraMoveBounded>().target = transform;
+        if (MainCamera.orthographic)
+            {
+                Debug.Log("Camera Focus");
+                // MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize, 2f, 1f * Time.deltaTime);
+                MainCamera.orthographicSize = 2f;
+            }
     }
 
 }
