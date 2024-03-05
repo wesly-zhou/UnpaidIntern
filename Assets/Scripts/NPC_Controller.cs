@@ -332,10 +332,12 @@ public class NPC_Controller : MonoBehaviour
             // If fit the requirement, reduce the number of items in the inventory and upate the inventory text
             Debug.Log("Success! You have given the items to the NPC!");
             Debug.Log(string.Join(", ", inventoryInfo));
+            Debug.Log(string.Join(", ", NPC_Requirement));
+            Debug.Log("cur_task: " + string.Join(", ", cur_task));
             give_bubble.SetActive(false);
             request_bubble.SetActive(false);
             // manager.numNPC -= 1;
-            for(int i = 0; i < cur_task.Length; i++)
+            for(int i = 0; i < NPC_Requirement.Length; i++)
             {
                 inventoryInfo[i] -= NPC_Requirement[i];
             }
