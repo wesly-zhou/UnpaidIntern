@@ -53,7 +53,7 @@ public class NPC_Controller : MonoBehaviour
     private float currentTime;
 
     // 
-    public int cur_task_num;
+    private int cur_task_num;
     private void SetupProgressBar()
     {
         // ProgressBar.gameObject.SetActive(true);
@@ -228,7 +228,8 @@ public class NPC_Controller : MonoBehaviour
             interactable = false;
         }
 
-        if (other.gameObject.CompareTag("Boundary"))
+        if (other.gameObject.CompareTag("Boundary") && NPC_State == -2)
+        
         {
             NPC_State = -1;
             TargetPosition_Fixed = rb.position + new Vector2(1f * FaceDirection, 0) ;
