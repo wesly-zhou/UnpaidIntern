@@ -36,6 +36,12 @@ public class GameHandler : MonoBehaviour
         MainMenu();
     }
 
+    public void RetryLevel() {
+        Time.timeScale = 1f;
+        GameHandler_PauseMenu.GameisPaused = false;
+        SceneManager.LoadScene(currentLevel);
+    }
+
     public void NextLevel()
     {
         SceneManager.LoadScene("Level " + (currentLevel + 1));
