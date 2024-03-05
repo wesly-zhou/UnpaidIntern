@@ -22,18 +22,19 @@ public class WinConHandler : MonoBehaviour
     }
 
     void Update() {
-
-        if (numNPC <= 0 && currentLevel == 5) {
-            SceneManager.LoadScene("WinScene");
-        }
-        else if (numNPC <= 0) {
+        if (numNPC <= 0) {
             // When win, show some text and disable the player movement
             Player.GetComponent<PlayerMovement>().enabled = false;
             mainCamera.GetComponentInChildren<Canvas>().transform.Find("WinText").gameObject.SetActive(true);
             
             // SceneManager.LoadScene("NextLevelScene");
             // ("LoadNextScene", 3f, "NextLevelScene");
-            StartCoroutine(LoadNextScene("NextLevelScene"));
+            if (currentLevel != 5) {
+                StartCoroutine(LoadNextScene("NextLevelScene"));
+            }
+            else {
+                StartCoroutine(LoadNextScene("WinScene"));
+            }
         }
     }
 
