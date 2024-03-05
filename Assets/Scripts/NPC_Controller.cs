@@ -309,7 +309,7 @@ public class NPC_Controller : MonoBehaviour
             }
         }
         
-        if(interactable == true && Input.GetKeyDown(KeyCode.F)){
+        if(interactable == true && Input.GetKeyDown(KeyCode.F) && NPC_State == 1){
             
 
             // Check if the player has enough items to give
