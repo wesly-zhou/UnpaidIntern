@@ -7,7 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     public static int currentLevel = 1;
+    public Text levelCleared;
     public Animator transition;
+
+    void Start() {
+        if (SceneManager.GetActiveScene().buildIndex == 10) {
+            Text levelClearedB = levelCleared.GetComponent<Text>();
+            levelClearedB.text = "Level " + currentLevel + " Cleared";
+        }
+    }
 
 
     public void StartGame()

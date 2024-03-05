@@ -85,7 +85,7 @@ public class NPC_Controller : MonoBehaviour
         // Set the initial state of the NPC, -1 is because the NPC must move for a short distance when it is created
         NPC_State = -2;
         // Generate a random distance for the NPC continue to move
-        randomDistance = Random.Range(5f, 10f);
+        randomDistance = Random.Range(8f, 10f);
         // Debug.Log("Random distance: " + randomDistance);
         // When the NPC is created, moving forward for a certain distance
         rb = transform.parent.GetComponent<Rigidbody2D>();
@@ -372,12 +372,6 @@ public class NPC_Controller : MonoBehaviour
                     break;
             }
         }
-    }
-    void DelayLeave(){
-        transform.parent.GetComponent<BoxCollider2D>().enabled = false;
-        NPC_State = 2;
-        transform.parent.GetComponent<Animator>().SetInteger("State", 2);
-        transform.parent.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     void EndGame() {

@@ -933,6 +933,10 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 150247504030760183, guid: 839ad17c5b915422c87db144e7aa3beb, type: 3}
+      propertyPath: levelCleared
+      value: 
+      objectReference: {fileID: 69844478}
     - target: {fileID: 9153948606384582554, guid: 839ad17c5b915422c87db144e7aa3beb, type: 3}
       propertyPath: m_RootOrder
       value: 3
