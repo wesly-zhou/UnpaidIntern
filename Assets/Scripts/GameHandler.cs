@@ -11,7 +11,7 @@ public class GameHandler : MonoBehaviour
     public Animator transition;
 
     void Start() {
-        if (SceneManager.GetActiveScene().buildIndex == 10) {
+        if (SceneManager.GetActiveScene().buildIndex == 6) {
             Text levelClearedB = levelCleared.GetComponent<Text>();
             levelClearedB.text = "Level " + currentLevel + " Cleared";
         }

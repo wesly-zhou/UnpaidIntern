@@ -23,7 +23,7 @@ public class WinConHandler : MonoBehaviour
 
     void Update() {
 
-        if (numNPC <= 0 && currentLevel == 9) {
+        if (numNPC <= 0 && currentLevel == 5) {
             SceneManager.LoadScene("WinScene");
         }
         else if (numNPC <= 0) {
