@@ -957,8 +957,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7830479554064505434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.36, y: 1.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.71, y: 0.54, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8888428475372551998}
@@ -1127,8 +1127,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984806580733554939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.66, y: -0.55, z: -0.17088509}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -5.66, y: -0.34, z: -0.17088509}
+  m_LocalScale: {x: 1.675, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8888428475372551998}
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   GetItem_Animation: {fileID: 0}
   GetItem: {fileID: 7400000, guid: 1d64af4e87c9ecd4dbc0da35bca8b3fe, type: 2}
   getSound: {fileID: 8300000, guid: 8c8b38cf886447f498b795d196d13892, type: 3}
-  workSound: {fileID: 0}
+  workSound: {fileID: 8300000, guid: 01f1db31bd167be459a19ad02d994d59, type: 3}
   Entity: {fileID: 3641949940328048466}
 --- !u!82 &7138414537154720572
 AudioSource:

@@ -84,6 +84,17 @@ public class Interaction_Controller : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        Debug.Log("Player" + other.transform.position.y + transform.name + transform.position.y);
+        if (other.CompareTag("Player") && other.transform.position.y > transform.position.y)
+        {   
+            Debug.Log("Player is above the object");
+            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 5;
+        }
+        if (other.CompareTag("NPC") && other.transform.position.y > transform.position.y)
+        {   
+            Debug.Log("NPC is above the object");
+            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder + 5;
+        }
         if (NPC_Controller.isTriggered && other.gameObject.CompareTag("Player")) return;
         // When object is static, notify user to use it
         if (other.CompareTag("Player") && state == 0)
