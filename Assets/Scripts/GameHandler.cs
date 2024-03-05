@@ -36,6 +36,12 @@ public class GameHandler : MonoBehaviour
         MainMenu();
     }
 
+    public void RetryLevel() {
+        Time.timeScale = 1f;
+        GameHandler_PauseMenu.GameisPaused = false;
+        SceneManager.LoadScene(currentLevel);
+    }
+
     public void NextLevel()
     {
         SceneManager.LoadScene("Level " + (currentLevel + 1));
@@ -61,6 +67,7 @@ public class GameHandler : MonoBehaviour
     {
         transition.Play("OutScene");
         yield return new WaitForSeconds(1.5f);
+        currentLevel = 1;
         SceneManager.LoadScene("Level 1");
     }
 }

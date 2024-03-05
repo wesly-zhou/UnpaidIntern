@@ -885,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8266141495031612798, guid: 92cbec7e2724509448c3cb58e7b762d5, type: 3}
       propertyPath: m_Text
-      value: RESTART
+      value: MAIN MENU
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
