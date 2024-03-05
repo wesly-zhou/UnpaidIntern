@@ -840,8 +840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ce6beca2e882b4c9bbcff9589ce7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FinishSound: {fileID: 0}
-  AngrySound: {fileID: 0}
+  FinishSound: {fileID: 8300000, guid: a60dcde4fab7f4e4bab36f43dd7eae1f, type: 3}
+  AngrySound: {fileID: 8300000, guid: 6bcaf0b122d7a3c44addd8ff511bebe6, type: 3}
   GetScoreSound: {fileID: 0}
   NPC_State: 0
   FaceDirection: 1

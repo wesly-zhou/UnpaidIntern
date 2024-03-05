@@ -60,7 +60,7 @@ public class GameHandler : MonoBehaviour
     IEnumerator LoadLevel()
     {
         transition.Play("OutScene");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("Level 1");
     }
 }

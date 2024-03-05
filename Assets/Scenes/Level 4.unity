@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 247162846}
   smoothing: 0.025
-  minPosition: {x: -6.9, y: -2.47}
+  minPosition: {x: -8, y: -2.47}
   maxPosition: {x: 10.4, y: 2.41}
   curve:
     serializedVersion: 2

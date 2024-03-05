@@ -2085,6 +2085,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1217015968}
     m_Modifications:
     - target: {fileID: 982802097416032945, guid: 049c9b0130ce71246be31d3372ce782a, type: 3}
+      propertyPath: Machine_num
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 982802097416032945, guid: 049c9b0130ce71246be31d3372ce782a, type: 3}
       propertyPath: Max_task_num
       value: 2
       objectReference: {fileID: 0}
@@ -7148,7 +7152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2108552699571473294, guid: 76466e601db99b14c91fcf339c49cea8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.61
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 2108552699571473294, guid: 76466e601db99b14c91fcf339c49cea8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7419,6 +7423,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1217015968}
     m_Modifications:
+    - target: {fileID: 982802097416032945, guid: 049c9b0130ce71246be31d3372ce782a, type: 3}
+      propertyPath: Machine_num
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 982802097416032945, guid: 049c9b0130ce71246be31d3372ce782a, type: 3}
       propertyPath: Max_task_num
       value: 2
