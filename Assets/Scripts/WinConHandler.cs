@@ -18,7 +18,7 @@ public class WinConHandler : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("PlayerCollider");
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         audioSource = GetComponent<AudioSource>();
-        // numNPC = GameObject.FindGameObjectsWithTag("NPC").Length;
+        numNPC = GameObject.FindGameObjectsWithTag("NPC").Length;
     }
 
     void Update() {

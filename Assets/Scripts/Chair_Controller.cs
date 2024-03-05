@@ -15,7 +15,7 @@ public class Chair_Controller : MonoBehaviour
     private bool isPlaying = false;
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("PlayerCollider") && isPlaying == false)
+        if ((other.gameObject.CompareTag("PlayerCollider") || (other.gameObject.CompareTag("NPC")) && isPlaying == false))
         {
             string pattern = @"\d+$";
             Match match = Regex.Match(GetComponent<SpriteRenderer>().sprite.name, pattern);

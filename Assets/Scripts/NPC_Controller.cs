@@ -173,7 +173,7 @@ public class NPC_Controller : MonoBehaviour
             Destroy(transform.parent.gameObject);
         }
 
-        if (NPC_State == 0)
+        if (NPC_State == 0 && (other.gameObject.CompareTag("NPC") || other.gameObject.CompareTag("Entity") || other.gameObject.CompareTag("PlayerView")))
         {
            // Meet collider and stop
            Debug.Log("Meet collider and stop! The collider name is: " + other.gameObject.name);
@@ -240,6 +240,12 @@ public class NPC_Controller : MonoBehaviour
     void Update()
     {
         switch(Machine_num){
+             case 2:
+                inventoryNum1 = int.Parse(inventoryText1.text);
+                inventoryNum2 = int.Parse(inventoryText2.text);
+                // inventoryNum3 = int.Parse(inventoryText3.text);
+                inventoryInfo = new int[] { inventoryNum1, inventoryNum2};
+                break; 
             case 3:
                 inventoryNum1 = int.Parse(inventoryText1.text);
                 inventoryNum2 = int.Parse(inventoryText2.text);
@@ -313,6 +319,8 @@ public class NPC_Controller : MonoBehaviour
                 if (inventoryInfo[cur_task[i]] < NPC_Requirement[cur_task[i]])
                 {
                     Debug.Log("You don't have enough items to give");
+                    Debug.Log("The requirement is: " + string.Join(", ", NPC_Requirement));
+                    Debug.Log("But you have: " + string.Join(", ", inventoryInfo));
                     // Show angry animation and leave the scene
                     NPC_State = 3;
                     // Play angry sound
@@ -353,6 +361,11 @@ public class NPC_Controller : MonoBehaviour
             Debug.Log("After giving the items to the NPC, the inventory is: ");
             Debug.Log(string.Join(", ", inventoryInfo));
             switch(Machine_num){
+                case 2:
+                    inventoryText1.text = inventoryInfo[0].ToString();
+                    inventoryText2.text = inventoryInfo[1].ToString();
+                    // inventoryText3.text = inventoryInfo[2].ToString();
+                    break;
                 case 3:
                     inventoryText1.text = inventoryInfo[0].ToString();
                     inventoryText2.text = inventoryInfo[1].ToString();

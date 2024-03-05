@@ -445,7 +445,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035443783, y: -0.039335072}
+  m_Offset: {x: -0.06796265, y: -0.26698303}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -456,7 +456,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0726118, y: 0.7672862}
+  m_Size: {x: 0.59124756, y: 0.54611206}
   m_EdgeRadius: 0.2
 --- !u!114 &1619037524096719154
 MonoBehaviour:
@@ -491,7 +491,6 @@ MonoBehaviour:
   Triple_task: {fileID: 8226168688190465492}
   ProgressBar: {fileID: 7780591516060695575}
   waitTime: 60
-  cur_task_num: 4
 --- !u!82 &6882417839976997905
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1549,7 +1548,7 @@ Transform:
   - {fileID: 3776825528970491393}
   - {fileID: 907604003829513595}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6096227187182863419
 SpriteRenderer:

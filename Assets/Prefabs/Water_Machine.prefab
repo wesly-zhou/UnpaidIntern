@@ -60,8 +60,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 517805907
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &1216342484102847261
 MonoBehaviour:
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 4777209567633403848}
   m_Layer: 0
   m_Name: Water_Machine_Art
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -416,7 +416,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.40893215}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -427,7 +427,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1.5, y: 1.1821357}
   m_EdgeRadius: 0
 --- !u!1 &2870720893072520328
 GameObject:
@@ -616,7 +616,7 @@ Transform:
   - {fileID: 4365399309699698917}
   - {fileID: 7979396024976686814}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4534448350240242354
 GameObject:
@@ -688,9 +688,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 517805907
+  m_SortingLayer: 1
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 83bf8e4d5791c594eb3b73a4e1279b6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -768,7 +768,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08240783, y: -0.19798899}
+  m_Offset: {x: 0.01888454, y: -0.11461449}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -779,7 +779,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.402962, y: 2.307476}
+  m_Size: {x: 0.92604184, y: 1.5054924}
   m_EdgeRadius: 0
 --- !u!114 &8438865632478341010
 MonoBehaviour:
@@ -806,6 +806,7 @@ MonoBehaviour:
   GetItem_Animation: {fileID: 0}
   GetItem: {fileID: 7400000, guid: 11699315df7c55a42a7127e1055bea30, type: 2}
   getSound: {fileID: 8300000, guid: 8c8b38cf886447f498b795d196d13892, type: 3}
+  workSound: {fileID: 0}
   Entity: {fileID: 2248364334744968825}
 --- !u!82 &4367477944572294562
 AudioSource:
@@ -973,9 +974,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 517805907
+  m_SortingLayer: 1
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: ca1483db1def40842b7a58c853d53410, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
