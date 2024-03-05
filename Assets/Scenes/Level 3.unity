@@ -1266,7 +1266,7 @@ MonoBehaviour:
   target: {fileID: 247162846}
   smoothing: 0.025
   minPosition: {x: -8, y: -2.47}
-  maxPosition: {x: 10.4, y: 2.41}
+  maxPosition: {x: 12, y: 2.41}
   curve:
     serializedVersion: 2
     m_Curve:
@@ -4000,6 +4000,14 @@ PrefabInstance:
     - target: {fileID: 2142399897058648160, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352004103427694024, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352004103427694024, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 2356126701810655193, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
       propertyPath: m_Layer

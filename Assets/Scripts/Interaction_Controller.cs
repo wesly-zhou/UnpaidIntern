@@ -58,11 +58,13 @@ public class Interaction_Controller : MonoBehaviour
         {   
             Debug.Log("Player is above the object");
             transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 5;
+            end_state.GetComponent<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 5;
         }
         if (other.CompareTag("NPC") && other.transform.position.y > transform.position.y)
         {   
             Debug.Log("NPC is above the object");
             transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder + 5;
+            end_state.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder + 5;
         }
         else{
             Debug.Log("Player is below the object");
@@ -89,11 +91,26 @@ public class Interaction_Controller : MonoBehaviour
         {   
             Debug.Log("Player is above the object");
             transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 5;
+            end_state.GetComponent<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder + 5;
         }
+        else if (other.CompareTag("Player") && other.transform.position.y < transform.position.y){
+            Debug.Log("Player is below the object");
+            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder - 5;
+            end_state.GetComponent<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder - 5;
+        }
+
+
         if (other.CompareTag("NPC") && other.transform.position.y > transform.position.y)
         {   
             Debug.Log("NPC is above the object");
             transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder + 5;
+            end_state.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder + 5;
+        }
+        else if (other.CompareTag("NPC") && other.transform.position.y < transform.position.y)
+        {   
+            Debug.Log("NPC is below the object");
+            transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder - 5;
+            end_state.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder - 5;
         }
         if (NPC_Controller.isTriggered && other.gameObject.CompareTag("Player")) return;
         // When object is static, notify user to use it
@@ -114,12 +131,15 @@ public class Interaction_Controller : MonoBehaviour
     {
         if (other.CompareTag("Player")){
             transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder - 5;
+            end_state.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.transform.parent.GetComponent<SpriteRenderer>().sortingOrder - 5;
         }
         if (other.CompareTag("NPC"))
         {   
             Debug.Log("NPC is above the object");
             transform.parent.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder - 5;
+            end_state.GetComponentInChildren<SpriteRenderer>().sortingOrder = other.GetComponent<SpriteRenderer>().sortingOrder - 5;
         }
+
         
         NPC_Controller.isTriggered = false;
         use_bubble.SetActive(false);

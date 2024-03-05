@@ -2311,7 +2311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4033895131659985842, guid: 76466e601db99b14c91fcf339c49cea8, type: 3}
       propertyPath: m_SortingOrder
-      value: 15
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4033895131659985842, guid: 76466e601db99b14c91fcf339c49cea8, type: 3}
       propertyPath: m_SortingLayerID
@@ -5252,7 +5252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2884845093416103753, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
       propertyPath: m_SortingOrder
-      value: 15
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2884845093416103753, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
       propertyPath: m_SortingLayerID
@@ -6728,7 +6728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1530539585256828268, guid: 7568601be287d544585fb088f7633708, type: 3}
       propertyPath: m_SortingOrder
-      value: 15
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1530539585256828268, guid: 7568601be287d544585fb088f7633708, type: 3}
       propertyPath: m_SortingLayerID
@@ -9957,7 +9957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2884845093416103753, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
       propertyPath: m_SortingOrder
-      value: 15
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 2884845093416103753, guid: 34f90acb2c7cf934a83ac779e7bc431a, type: 3}
       propertyPath: m_SortingLayerID
@@ -10997,7 +10997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4033895131659985842, guid: 76466e601db99b14c91fcf339c49cea8, type: 3}
       propertyPath: m_SortingOrder
-      value: 15
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4033895131659985842, guid: 76466e601db99b14c91fcf339c49cea8, type: 3}
       propertyPath: m_SortingLayerID
@@ -11115,6 +11115,14 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: d65b1dc494eabf34dbb1c22717b087ba, type: 2}
+    - target: {fileID: 7187826440751537390, guid: 98408efb85fb74145bb6539014d5f947, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5890794
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187826440751537390, guid: 98408efb85fb74145bb6539014d5f947, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.3722928
+      objectReference: {fileID: 0}
     - target: {fileID: 7830479554064505434, guid: 98408efb85fb74145bb6539014d5f947, type: 3}
       propertyPath: m_IsActive
       value: 0
