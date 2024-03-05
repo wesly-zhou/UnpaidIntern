@@ -30,7 +30,7 @@ public class NPC_Controller : MonoBehaviour
     public static bool isTriggered = false;
     private BoxCollider2D interactionAreaCollider;
     public int Max_task_num = 3;
-    public int Machine_num = 3;
+    public int Machine_num = 4;
     // 1 = paper, 2 = soda, 3 = water
     // private int itemNum1 = 0, itemNum2 = 0, itemNum3 = 0, itemNum4 = 0, itemNum5 = 0;
     private int inventoryNum1, inventoryNum2, inventoryNum3, inventoryNum4, inventoryNum5;
