@@ -6,8 +6,8 @@ using System.Collections;
 
 public class WinConHandler : MonoBehaviour
 {
-    public int numNPC;
-    public int currentLevel;
+    public int numNPC = 0;
+    public int currentLevel = 0;
     private GameObject Player;
     private GameObject mainCamera;
     private AudioSource audioSource;
