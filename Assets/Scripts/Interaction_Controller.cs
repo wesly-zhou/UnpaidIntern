@@ -32,7 +32,10 @@ public class Interaction_Controller : MonoBehaviour
     public AnimationClip GetItem;
     // -----------------------------------------------------
 
+    // ------------------ Sound ----------------------------
     private AudioSource audioSource;
+    public AudioClip getSound;
+    public AudioClip workSound;
     public GameObject Entity;
     // Start is called before the first frame update
     void Start()
@@ -137,12 +140,13 @@ public class Interaction_Controller : MonoBehaviour
             if (interactable == true && state == 0 && isProcessing == false && NPC_Controller.isTriggered == true){
                 use_bubble.SetActive(false);
                 Entity.GetComponent<Animator>().SetInteger("State", 1);
+                
                 state = 1;
-                if (!audioSource.isPlaying)
-                    {
-                        // audioSource.clip = walkSound;
-                        audioSource.Play();
-                    }
+                audioSource.clip = workSound;
+                audioSource.volume = 1f;
+                audioSource.Play();
+                    
+                
                 ShowProgressBar();
             }
         
@@ -150,7 +154,12 @@ public class Interaction_Controller : MonoBehaviour
         // Finish interacting with object
             else if(interactable == true && state == 2 && isProcessing == false)
             {
-                
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.clip = getSound;
+                        audioSource.volume = 0.3f;
+                        audioSource.Play();
+                    }
                     finish_bubble.SetActive(false);
                     itemNum++;
                     inventoryText.text = itemNum.ToString();

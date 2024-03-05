@@ -925,7 +925,8 @@ MonoBehaviour:
   totalTime: 5
   inventoryText: {fileID: 0}
   GetItem_Animation: {fileID: 0}
-  GetItem: {fileID: 7400000, guid: e55df1f8b810ff146b43d986c586e65c, type: 2}
+  GetItem: {fileID: 7400000, guid: 1d64af4e87c9ecd4dbc0da35bca8b3fe, type: 2}
+  getSound: {fileID: 8300000, guid: 8c8b38cf886447f498b795d196d13892, type: 3}
   Entity: {fileID: 3641949940328048466}
 --- !u!82 &7138414537154720572
 AudioSource:
