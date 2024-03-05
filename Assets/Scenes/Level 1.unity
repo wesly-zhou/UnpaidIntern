@@ -7096,7 +7096,7 @@ PrefabInstance:
       objectReference: {fileID: 1771426504}
     - target: {fileID: 2928921335304082136, guid: d000694c7009fe64285979bb5f617c64, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4428235078565728198, guid: d000694c7009fe64285979bb5f617c64, type: 3}
       propertyPath: m_IsActive
@@ -7108,7 +7108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4895757866935813686, guid: d000694c7009fe64285979bb5f617c64, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5144413495735478746, guid: d000694c7009fe64285979bb5f617c64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7160,7 +7160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7063017803595708796, guid: d000694c7009fe64285979bb5f617c64, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8095483351142837515, guid: d000694c7009fe64285979bb5f617c64, type: 3}
       propertyPath: m_SortingLayer
